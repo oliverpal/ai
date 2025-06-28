@@ -14,7 +14,7 @@
 * **Objective:** Understand the `[Project Topic]` thoroughly from the perspective of a Domain expert, Client, focusing on their problems, goals, workflows, and information needs relevant to a potential software solution.
 * **Actions:**
     1.  Conduct web research on `[Project Topic]`.
-    2.  **Focus:** Identify key concepts, common challenges, existing solutions (if any), relevant regulations or standards, typical data points, and workflows pertinent to a Domain expert interacting with this topic.
+    2.  **Focus:** Identify key concepts, common challenges, security considerations, existing solutions (if any), relevant regulations or standards, typical data points, and workflows pertinent to a Domain expert interacting with this topic.
     3.  **Synthesize:** Create a summary document (`1_Research_Summary.md`) outlining these findings. Clearly state the implications for a software solution – what problems could it solve? What information must it manage/display?
     4.  **Curate Links:** Compile a list of authoritative/official sources and highly relevant links (`1_Relevant_Links.md`).
     5.  **(Optional) Visualize Complexity:** If the topic involves complex relationships, processes, or systems, create Mermaid diagrams (`1_Domain_Diagram.md` or embedded in the summary) to illustrate these concepts visually.
@@ -66,7 +66,7 @@
 
 ### Step 3: Stakeholder Review & Concept Refinement
 
-* **Role:** Product Owner / Project Manager (presenting), Key Stakeholders (Client, End-Users, Domain Experts, Technical Leads)
+* **Role:** Product Owner / Project Manager (presenting), Key Stakeholders (Client, End-Users, Domain Experts, Technical Leads, Security team members)
 * **Objective:** Validate the defined requirements (`2_PRD.md`) and high-level technical concept (`2_App_Concept.md`) with stakeholders to ensure alignment and gather crucial feedback before proceeding. (The presentation from Step 1.5 may have already occurred, setting context).
 * **Actions:**
     1.  **Present:** Share and walk through `2_PRD.md` and `2_App_Concept.md` with stakeholders.
@@ -166,9 +166,39 @@
     * Comprehensive Vitest and Playwright test suites.
     * Running application implementing approved features and UI.
 
----
+### Step 9: Security Requirements
 
-### Step 9: Quality Assurance (QA) & User Acceptance Testing (UAT)
+* **Role:** You are an expert Angular Developer(s) developer tasked with creating a secure, production-ready web application.
+* **Objective:** Adapt the Angular application based on the preceding approved plans and designs to make it secure.
+* **Actions:**
+    1. **Dependency Security - Prevent Slopsquatting:**
+        * **NEVER** install packages with typos or similar names to popular packages
+        * Only use well-established, verified packages from official repositories
+        * Always verify package names exactly match official documentation
+        * Check package download counts (>1M weekly downloads preferred)
+        * Verify package maintainers and GitHub repositories before use
+
+    2. **File Upload Security**
+        * Sanitize all file names before processing
+        * Use temporary storage with automatic cleanup
+        * Never execute uploaded content as code
+
+    3. **Data Processing Security**
+        * Validate all user inputs and queries
+        * Implement rate limiting for API calls
+        * Use parameterized queries for any database operations
+        * Sanitize column names and data before processing
+        * Prevent code injection through data manipulation
+        * Implement proper error handling without exposing internals
+
+    3. **Client-Side Security**
+        * Use Content Security Policy (CSP) headers
+        * Implement proper CORS policies
+        * Validate all user inputs on both client and server
+        * Use HTTPS for all communications
+        * Store data in memory only (no localStorage/sessionStorage in Claude artifacts)
+
+### Step 10: Quality Assurance (QA) & User Acceptance Testing (UAT)
 
 * **Role:** QA Testers, Product Owner, Key Stakeholders / End Users
 * **Objective:** Perform formal testing on the developed application to ensure it meets requirements, is free of critical defects, and is acceptable to end-users before release.
