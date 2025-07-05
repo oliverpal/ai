@@ -196,7 +196,7 @@
         * Implement proper CORS policies
         * Validate all user inputs on both client and server
         * Use HTTPS for all communications
-        * Store data in memory only (no localStorage/sessionStorage in Claude artifacts)
+        * Store data in memory only (no localStorage/sessionStorage in artifacts)
 
 ### Step 10: Quality Assurance (QA) & User Acceptance Testing (UAT)
 
